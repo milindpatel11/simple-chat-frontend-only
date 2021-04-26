@@ -10,4 +10,9 @@
 - Preview Link
 - and a few more
 
-###### Messages are only stored for session and history resets when page is loaded / reloaded
+###### NOTE: Messages are only stored for session and history resets when page is loaded / reloaded
+
+
+Current Preview: 
+
+<img width="1253" alt="Screen Shot 2021-04-26 at 3 39 57 AM" src="https://user-images.githubusercontent.com/46854497/116046564-33f96700-a641-11eb-9fc0-e942153f6592.png">
