@@ -8,7 +8,7 @@ function MessageItem ({ message, author }) {
 
   return (
 
-  <div className='flex-column' style={{width:'100%', padding: '0 20px', alignItems:align, }}>
+  <div className='flex-column' style={{width:'100%', padding: '0 20px', alignItems:align}}>
     <h3 style={{textAlign:align, borderRadius:'5px', backgroundColor:color, padding:'5px 10px', maxWidth:'60%', wordWrap: 'break-word'}}>
       {message.message}
     </h3>
@@ -31,39 +31,47 @@ function ChatContainer({ user, otherUser, chatMessages,
   }
 
   const handleSubmit = () => {
+    if (typedMessage != null) {
     const timestamp = new Date();
     addMessage(
       {
         user: user,
         message: typedMessage,
-        id: `${user}_`,
+        id: `${user}_${timestamp.getTime()}`,
         parent: '',
         timeCreated:timestamp
       }
     );
     setTypedMessage(null)
   }
+}
 
-  // const handleKeypress = (e) => {
-  //   if (e.keyCode === 13) {
-  //     handleSubmit();
-  //   }
-  // }
+  const handleKeypress = (e) => {
+    if (e.keyCode === 13) {
+      handleSubmit();
+    }
+  }
 
   return (
-    <div className="chat-container flex-column">
+    <div className="chat-container flex-column" style={{height:'100%', borderBottom:'1px solid grey'}}>
 
-      <h2> {user}'s Device </h2>
-      <h4> Conversation with {otherUser} </h4>
+      <div className='flex-column'>
+        <h4> {user}'s Device </h4>
+        <h4> Conversation with {otherUser} </h4>
+      </div>
 
-      <div style={{width: '100%'}}>
+      <div style={{width: '100%', borderBottom:'1px solid grey',overflowY: "auto"}}>
         {
           chatMessages.map( message => <MessageItem message={message} author={user} key={message.id}/>)
         }
       </div>
-          <textarea type="text" name="name" value={typedMessage ? typedMessage : ''}
-            onChange={changeFun} /* onKeyPress={handleKeypress} */ />
+
+      <div className='flex-column' style={{width:'50%', alignSelf:'center', marginTop:'10px'}}>
+          <input type="text" name="name" value={typedMessage ? typedMessage : ''}
+            onChange={changeFun} onKeyPress={handleKeypress} style={{height:'30px'}}/>
+            <br/>
           <input type="submit" value="Submit" onClick={handleSubmit}/>
+      </div>
 
     </div>
   );

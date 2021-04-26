@@ -20,8 +20,11 @@ function UserContainer({ user, otherUser, chatMessages, addMessage, backg }) {
     <div className="flex-column" style={{width:'50%', backgroundColor:backg, borderRadius:'10px', margin:'15px'}}>
       <ChatContainer user={user} otherUser={otherUser} chatMessages={chatMessages}
         addMessage={addMessage} makeActiveThread={makeActiveThread} />
-      <ThreadContainer user={user} otherUser={otherUser} chatMessages={chatMessages}
+      {
+        threadID &&
+        <ThreadContainer user={user} otherUser={otherUser} chatMessages={chatMessages}
         addMessage={addMessage} thread={threadID} removeThread={removeThread}/>
+      }
     </div>
   );
 }

@@ -46,7 +46,7 @@ function MainContainer() {
   }, [messageAdded]  )
 
   return (
-      <div className="both-users flex-row">
+      <div className="both-users flex-row" style={{height:'100%'}}>
         <UserContainer user='Alice' otherUser='Bob' chatMessages={chatMessages}
           addMessage={addMessage} backg={'rgb(235, 235, 235'}/>
         <UserContainer user='Bob' otherUser='Alice' chatMessages={chatMessages}

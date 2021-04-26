@@ -18,7 +18,7 @@ function Header(props) {
 
           <div className="nav-list flex">
 
-            <h3 style={{color:'white'}}> Simple Chat Example </h3>
+            <h3 style={{color:'white', textAlign:'center'}}> Simple Chat Example </h3>
 
           </div>
 
